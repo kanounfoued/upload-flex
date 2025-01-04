@@ -1,4 +1,5 @@
 import { type FlexFile } from './types/File.types';
+import FlexScheduler from 'src/scripts/scheduler.ts';
 
 /**
  *
@@ -28,4 +29,4 @@ import { type FlexFile } from './types/File.types';
  *
  */
 
-export { FlexFile };
+export { FlexFile, FlexScheduler };
