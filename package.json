@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "exec-ts": "yarn build && yarn preview",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write .",
