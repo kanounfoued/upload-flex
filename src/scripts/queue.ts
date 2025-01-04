@@ -1,3 +1,5 @@
+export type FlexQueueTask<R> = () => Promise<R>;
+
 export default class FlexQueue<T> {
   limit: number;
   queue: Array<T>;
