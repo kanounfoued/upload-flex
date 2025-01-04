@@ -1,28 +1,18 @@
-import FlexQueue from './queue';
-
-type FnCallback<A, R> = (args: A) => Promise<R>;
-
-type QueueRow<A, R> = {
-  cb: FnCallback<A, R>;
-  args: A;
-};
-
-function Task<A, R>(cb: FnCallback<A, R>, args: A) {
-  return () => cb(args);
-}
+import FlexQueue, { FlexQueueTask } from './queue';
+import { TaskParams, Task } from './task';
 
 export default class FlexScheduler<A, R> {
-  source: QueueRow<A, R>[];
-  queue: FlexQueue<() => Promise<R>>;
+  source: TaskParams<A, R>[];
+  queue: FlexQueue<FlexQueueTask<R>>;
   limit: number;
 
-  constructor(source: QueueRow<A, R>[], limit: number = 2) {
+  constructor(source: TaskParams<A, R>[], limit: number = 2) {
     this.source = source;
-    this.queue = new FlexQueue<() => Promise<R>>(limit);
+    this.queue = new FlexQueue<FlexQueueTask<R>>(limit);
     this.limit = limit;
   }
 
-  setSource(source: QueueRow<A, R>[]) {
+  setSource(source: TaskParams<A, R>[]) {
     this.source = [...this.source, ...source];
   }
 
@@ -52,7 +42,7 @@ export default class FlexScheduler<A, R> {
   }
 }
 
-const source: QueueRow<Array<string>, void>[] = new Array(100000)
+const source: TaskParams<Array<string>, void>[] = new Array(100000)
   .fill(0)
   .map((_, index) => {
     return {
