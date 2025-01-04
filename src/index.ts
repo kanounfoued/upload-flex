@@ -1,4 +1,4 @@
-import { type File } from './types/File.types';
+import { type FlexFile } from './types/File.types';
 
 /**
  *
@@ -28,4 +28,4 @@ import { type File } from './types/File.types';
  *
  */
 
-export { File };
+export { FlexFile };
