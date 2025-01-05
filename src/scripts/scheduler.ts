@@ -16,7 +16,6 @@ export default class FlexScheduler<A, R> {
     this.source = [...this.source, ...source];
   }
 
-  // The queue and the task running can be created using event instead.
   schedule() {
     while (!this.queue.isFull()) {
       const sourceItem = this.source.shift();
@@ -25,7 +24,7 @@ export default class FlexScheduler<A, R> {
         return;
       }
 
-      const task = Task(sourceItem.cb, sourceItem.args);
+      const task = Task(sourceItem.cb, sourceItem?.args);
 
       // NOTE: with settimeout the input was fully interactive to user input.
       //  TODO: setTimeout should replace with something more efficient like IdleCallback API
@@ -42,18 +41,18 @@ export default class FlexScheduler<A, R> {
   }
 }
 
-const source: TaskParams<Array<string>, void>[] = new Array(100000)
-  .fill(0)
-  .map((_, index) => {
-    return {
-      cb: () => {
-        console.log(`Task ${index}`);
-        return Promise.resolve();
-      },
-      args: [],
-    };
-  });
+// const source: TaskParams<Array<string>, void>[] = new Array(100000)
+//   .fill(0)
+//   .map((_, index) => {
+//     return {
+//       cb: () => {
+//         console.log(`Task ${index}`);
+//         return Promise.resolve();
+//       },
+//       args: [],
+//     };
+//   });
 
-const scheduler = new FlexScheduler(source, 2);
+// const scheduler = new FlexScheduler(source, 2);
 
-scheduler.schedule();
+// scheduler.schedule();

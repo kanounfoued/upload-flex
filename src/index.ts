@@ -1,3 +1,9 @@
+import {
+  Processor,
+  StreamProcessor,
+  RegularProcessor,
+  ProcessorFactory,
+} from './scripts/processor';
 import { type FlexFile } from './types/File.types';
 import FlexScheduler from 'src/scripts/scheduler.ts';
 
@@ -30,3 +36,4 @@ import FlexScheduler from 'src/scripts/scheduler.ts';
  */
 
 export { FlexFile, FlexScheduler };
+export { type Processor, StreamProcessor, RegularProcessor, ProcessorFactory };
