@@ -2,6 +2,7 @@ import { UploaderConfig } from 'src/types/Uploader.types';
 
 export const defaultConfig: UploaderConfig = {
   trigger: 'onClick',
+  file_split_type: 'regular',
   multiple: false,
   accepts: ['*'],
   max_concurrent_uploads: 3,
