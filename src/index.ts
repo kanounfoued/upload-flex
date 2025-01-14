@@ -4,7 +4,7 @@ import {
   RegularProcessor,
   ProcessorFactory,
 } from './scripts/processor';
-import { type FlexFile } from './types/File.types';
+import { FlexFile } from './types/File.types';
 import FlexScheduler from 'src/scripts/scheduler.ts';
 
 /**
